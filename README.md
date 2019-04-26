@@ -3,6 +3,8 @@
 ## Quick Start
 
 ```bash
+# the back end requires mongodb
+
 # clone repo
 git clone git@github.com:gatortim50/wellthon-login.git
 cd wellthon-login
