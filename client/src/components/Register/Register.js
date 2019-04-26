@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Button,
   Card,
@@ -10,15 +10,15 @@ import {
   InputGroupAddon,
   InputGroupText,
   Row
-} from 'reactstrap';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+} from 'reactstrap'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-import { registerUser } from '../../actions/authActions';
-import Logo from "../../images/wellthon.jpg";
+import { registerUser } from '../../actions/authActions'
+import Logo from '../../images/wellthon.jpg'
 library.add(faUser)
 library.add(faLock)
 
@@ -28,46 +28,43 @@ const initialState = {
   password: '',
   password2: '',
   errors: {}
-};
+}
 class Register extends Component {
-  state = initialState;
+  state = initialState
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/dashboard')
     }
   }
 
   onSubmit = e => {
-    e.preventDefault();
-    const { name, email, password, password2 } = this.state;
+    e.preventDefault()
+    const { name, email, password, password2 } = this.state
 
     const newUser = {
       name: name,
       email: email,
       password: password,
       password2: password2
-    };
-    this.props.registerUser(newUser, this.props.history);
-  };
+    }
+    this.props.registerUser(newUser, this.props.history)
+  }
 
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   render() {
-    const { errors } = this.state;
+    const { errors } = this.state
 
     return (
       <div className="app flex-row align-items-center">
-        <Container >
-          <Row className = "justify-content-center" >
-            <img style={{ width: "150px", height: "120px" }}
-              src={Logo}
-              alt="Wellthon"
-            />
+        <Container>
+          <Row className="justify-content-center">
+            <img style={{ width: '150px', height: '120px' }} src={Logo} alt="Wellthon" />
           </Row>
         </Container>
         <Container>
@@ -75,8 +72,7 @@ class Register extends Component {
             <Col md="6">
               <Card className="mx-4">
                 <CardBody className="p-4">
-                  <h1> Register </h1>{' '}
-                  <p className="text-muted"> Create your account </p>{' '}
+                  <h1> Register </h1> <p className="text-muted"> Create your account </p>{' '}
                   <form noValidate onSubmit={this.onSubmit}>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
@@ -146,7 +142,7 @@ class Register extends Component {
           </Row>{' '}
         </Container>{' '}
       </div>
-    );
+    )
   }
 }
 
@@ -154,16 +150,16 @@ Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
-});
+})
 
 export default connect(
   mapStateToProps,
   {
     registerUser
   }
-)(Register);
+)(Register)

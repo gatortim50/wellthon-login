@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/authActions';
-import store from './stores/store';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
+import setAuthToken from './utils/setAuthToken'
+import { setCurrentUser, logoutUser } from './actions/authActions'
+import store from './stores/store'
 
 // Pages
-import { Login, Dashboard, Page404, Page500, Register } from './components';
-
+import { Login, Dashboard, Page404, Page500, Register } from './components'
 
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
-  setAuthToken(localStorage.jwtToken);
+  setAuthToken(localStorage.jwtToken)
   // Decode token and get user info and exp
-  const decoded = jwt_decode(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken)
   // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
+  store.dispatch(setCurrentUser(decoded))
 
   // Check for expired token
-  const currentTime = Date.now() / 1000;
+  const currentTime = Date.now() / 1000
   if (decoded.exp < currentTime) {
     // Logout user
-    store.dispatch(logoutUser());
+    store.dispatch(logoutUser())
 
     // Redirect to login
-    window.location.href = '/login';
+    window.location.href = '/login'
   }
 }
 
@@ -37,20 +36,15 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" name="Login Page" component={Login} />
-            <Route
-              exact
-              path="/register"
-              name="Register Page"
-              component={Register}
-            />
+            <Route exact path="/register" name="Register Page" component={Register} />
             <Route exact path="/dashboard" name="Dashboard" component={Dashboard} />
             <Route exact path="/404" name="Page 404" component={Page404} />
             <Route exact path="/500" name="Page 500" component={Page500} />
           </Switch>
         </BrowserRouter>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App
