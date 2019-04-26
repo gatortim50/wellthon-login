@@ -8,7 +8,6 @@ class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault()
     this.props.logoutUser()
-    // this.props.history.push('/login');
   }
 
   render() {
@@ -19,7 +18,7 @@ class Navbar extends Component {
         <li className="nav-item" />
         <li className="nav-item" />
         <li className="nav-item">
-          <a href="" onClick={this.onLogoutClick.bind(this)} className="nav-link">
+          <a href="/login" onClick={this.onLogoutClick.bind(this)} className="nav-link">
             <img
               className="rounded-circle"
               src={user.avatar}

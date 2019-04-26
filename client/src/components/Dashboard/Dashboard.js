@@ -4,19 +4,9 @@ import { connect } from 'react-redux'
 import Spinner from '../common/Spinner'
 import Navbar from '../Layout/Navbar'
 
-const initialState = {
-  user: []
-}
 class Dashboard extends Component {
-  state = initialState
-
-  componentDidMount() {
-    console.log('isAuthenticated: ', this.props.auth.isAuthenticated)
-  }
-
   render() {
     const { user } = this.props.auth
-    console.log('user: ', this.props.auth.user.name)
 
     let dashboardContent
 
