@@ -1,0 +1,51 @@
+{
+  "extends": [
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "standard",
+    "standard-react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["react", "jest"],
+  "globals": {
+    "beforeEach": true,
+    "describe": true,
+    "expect": true,
+    "it": true,
+    "React": true,
+    "xdescribe": true,
+    "xit": true,
+    "testUtils": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "only-multiline"],
+    "indent": [
+      "warn",
+      2,
+      {
+        "VariableDeclarator": { "var": 2, "let": 2, "const": 3 },
+        "SwitchCase": 1
+      }
+    ],
+    "no-alert": "warn",
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "padded-blocks": ["error", { "classes": "always" }],
+    "react/prop-types": [0],
+    "no-mixed-operators": 0
+  }
+}
