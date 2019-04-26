@@ -3,6 +3,10 @@
 ## Quick Start
 
 ```bash
+# clone repo
+git clone git@github.com:gatortim50/wellthon-login.git
+cd wellthon-login
+
 # Install dependencies for server
 yarn install
 
